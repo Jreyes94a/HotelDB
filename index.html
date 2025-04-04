@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Variety Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: 500px;
+            background-position: center;
+            color: #fff;
+            font-family: "Satisfy", cursive;
+            font-style: normal;
+            color: black;
+        }
+        h1 {
+            font-size: 4.0em;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: "Satisfy", cursive;
+            font-style: normal;
+        }
+        h2 {
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            font-size: 2.0em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: "Satisfy", cursive;
+            font-style: normal;
+        }
+        h3, h4, label, form {
+            justify-content: center;
+            text-align: center;
+            font-size: 1.0em;
+            margin: 20px auto;
+            max-width: 800px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-family: "Domine", serif;
+            font-style: normal;
+        }
+        p {
+            text-align: center;
+            font-size: 1.0em;
+            margin: 15px auto;
+            max-width: 800px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-family: "Domine", serif;
+        }
+        a, button {
+            font-family: "Domine", serif;
+            text-decoration: none;
+            align: center;
+            color: #fff;
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            outline: none;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .fade {
+            animation: fadeEffect 1.5s;
+        }
+        @keyframes fadeEffect {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .gallery img:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            padding: 5px;
+            background-color: #ccc;
+            margin: 5px auto;
+            width: 80%;
+        }
+        nav ul {
+            font-family: "Domine", serif;
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        img {
+            border: black;
+            width: 350px;
+        }
+        table,
+        td {
+            align: center;
+            margin: 20px auto;
+            border: 2px solid black;
+            border: black 2px solid;
+            background-color: white;
+        }
+        td {
+            color: black;
+            font-family: "Domine", serif;
+            font-style: normal;
+            font-size: 1.0em;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
+
+    <script>
+        function createTable(data) {
+            let table = '<table>';
+            data.forEach(item => {
+                table += `<tr><td>${item}</td></tr>`;
+            });
+            table += '</table>';
+            return table;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const singleRoomData = ['$199.99 Avg. Per night ', 'Check-in time: 3 PM', 'Check-out time: 11 AM'];
+            const doubleRoomData = ['$299.99 Avg. Per night', 'Check-in time: 3 PM', 'Check-out time: 11 AM'];
+            const cityViewData = ['$399.99 Avg. Per night', 'Check-in time: 3 PM', 'Check-out time: 11 AM'];
+
+            const singleRoomDetails = document.getElementById('singleRoomDetails');
+            const doubleRoomDetails = document.getElementById('doubleRoomDetails');
+            const cityViewDetails = document.getElementById('cityViewDetails');
+
+            if (singleRoomDetails) {
+                singleRoomDetails.innerHTML = createTable(singleRoomData);
+            }
+            if (doubleRoomDetails) {
+                doubleRoomDetails.innerHTML = createTable(doubleRoomData);
+            }
+            if (cityViewDetails) {
+                cityViewDetails.innerHTML = createTable(cityViewData);
+            }
+
+            const bookingForm = document.querySelector('form');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const formData = new FormData(this);
+
+                    fetch('booking_process.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        // Display the response from booking_process.php
+                        document.getElementById('paymentFormContainer').innerHTML = data;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('paymentFormContainer').innerHTML = "<p>An error occurred.</p>";
+                    });
+                });
+            }
+
+            const paymentFormContainer = document.getElementById('paymentFormContainer');
+            if (paymentFormContainer) {
+                paymentFormContainer.addEventListener('submit', function(event) {
+                    if (event.target.tagName === 'FORM') {
+                        event.preventDefault();
+
+                        const paymentFormData = new FormData(event.target);
+
+                        fetch('payment_process.php', {
+                            method: 'POST',
+                            body: paymentFormData
+                        })
+                        .then(response => response.text())
+                        .then(paymentData => {
+                            paymentFormContainer.innerHTML = paymentData;
+                        })
+                        .catch(paymentError => {
+                            console.error('Payment Error:', paymentError);
+                            paymentFormContainer.innerHTML = "<p>Payment error occurred.</p>";
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <header>
+        <h1>The Variety Hotel</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
+            </ul>
+        </nav>
+
+        <hr>
+
+        <h2>Welcome to Paradise , Where luxury never ends...</h2>
+        <p>Experience the epitome of luxury and comfort at The Variety Hotel. Nestled in the heart of the city, our hotel offers a unique blend of modern elegance and timeless charm. Whether you're here for business or leisure, we have everything you need to make your stay unforgettable.
+        </p>
+
+        <div class="gallery">
+            <img src="lobby.jpg" alt="Image 1">
+            <img src="hallway.jpg" alt="Image 2">
+            <img src="room.jpg" alt="Image 3">
+            <img src="deck.jpg" alt="Image 4">
+            <img src="lobby2.jpg" alt="Image 5">
+            <img src="cityview.jpg" alt="Image 6">
+            <img src="doubleroom.jpg" alt="Image 7">
+        </div>
+
+        <h2>Luxury Awaits You...</h2>
+        <p>Book your stay today and experience the best of hospitality.</p>
+        <p>Choose from a variety of rooms that suit your needs.</p>
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    <fieldset>
+                        <form action="booking_process.php" method="POST">
+                            <h4>Guest Information</h4>
+                            <label for="first_name">First Name:</label><br>
+                            <input type="text" name="first_name" id="first_name" required><br><br>
+
+                            <label for="last_name">Last Name:</label><br>
+                            <input type="text" name="last_name" id="last_name" required><br><br>
+
+                            <label for="email">Email:</label><br>
+                            <input type="email" name="email" id="email" required><br><br>
+
+                            <h4>Booking Information</h4>
+                            <label for="check_in">Check-in Date:</label><br>
+                            <input type="date" name="check_in" id="check_in" required><br><br>
+
+                            <label for="check_out">Check-out Date:</label><br>
+                            <input type="date" name="check_out" id="check_out" required><br><br>
+
+                            <label for="room_type">Room Type:</label><br>
+                            <select name="room_type" id="room_type" required>
+                                <option value="Single Bedroom">Single Bedroom</option>
+                                <option value="Double Bedroom">Double Bedroom</option>
+                                <option value="City View">City View</option>
+                            </select><br><br>
+
+                            <label for="number_of_guests">Number of Guests:</label><br>
+                            <input type="number" name="number_of_guests" id="number_of_guests" min="1" required><br><br>
+
+                            <button type="submit">Book Now</button>
+                        </form>
+
+                        <div id="paymentFormContainer">
+                            </div>
+
+                    
+                    </fieldset>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <img src="room.jpg" alt="Single Bedroom"></td>
+                <td> Single Bedroom
+                    <div id="singleRoomDetails">
+                        </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <img src="doubleroom.jpg" alt="Double Bedroom"> </td>
+                <td> Double Bedroom
+                    <div id="doubleRoomDetails">
+                        </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <img src="cityview.jpg" alt="City View Suite"></td>
+                <td> City View Suite
+                    <div id="cityViewDetails">
+                        </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 The Variety Hotel. All rights reserved.</p>
+    </footer>
+</body>
+</html>

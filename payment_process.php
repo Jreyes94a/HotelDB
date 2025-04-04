@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payment_stmt->bind_param("isds", $booking_id, $payment_method, $amount, $payment_date);
 
     if ($payment_stmt->execute()) {
-        echo "Payment inserted successfully.";
+        echo "Booking successful! We will send your booking confirmation details to your email soon. Thank you for choosing Variety Hotel!";
     } else {
         echo "MySQL Error: " . $payment_stmt->error;
     }

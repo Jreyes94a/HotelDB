@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'Hotel_DB';
+$dbname = 'HotelDB';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {

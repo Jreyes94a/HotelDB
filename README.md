@@ -14,11 +14,14 @@ Clone this repository in your local machine:
 * payment_process.php
 * index.html
 * HotelDB_Script.sql
-* booking
-* v
-* v
-* v
-* v
+* cityview.php
+* deck.jpg
+* doubleroom.jpg
+* gallery.php
+* hallway.jpg
+* lobby.jpg
+* lobby2.jpg
+* room.jpg
 
 ## Database Setup
 1.  Start the Apache and MySQL services in your XAMPP Control Panel.

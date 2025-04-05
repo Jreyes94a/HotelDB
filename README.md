@@ -13,7 +13,7 @@ Clone this repository in your local machine:
 * booking_process.php
 * payment_process.php
 * index.html
-* HotelDB_Script.sql
+* NewnImproved.sql
 * cityview.php
 * deck.jpg
 * doubleroom.jpg

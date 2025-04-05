@@ -42,7 +42,7 @@ Clone this repository in your local machine:
 1.  **Browse the Website:** Navigate through the different pages (Home, Gallery, Bookings) to ensure the basic layout is working.
 2.  **Make a Booking:**
     * Fill out the customer and booking information form.
-    * Click "Book Now" (The small "Book Now").
+    * Click "Book Now"
     * Verify that the booking process completes without errors and (if implemented) that you are presented with a payment option.
     * Check your database (using phpMyAdmin) to confirm that the booking information has been added to the appropriate tables (Guest, Booking).
 3.  **Attempt Payment (if applicable):** If you have a payment processing simulation, go through the payment steps. Verify that the payment information is (or would be) recorded in the database (Payment table).

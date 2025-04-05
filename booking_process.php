@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'HotelDB';
+$dbname = 'Hotel_DB';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 

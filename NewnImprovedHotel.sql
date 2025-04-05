@@ -163,10 +163,10 @@ WHERE
     select * from RoomType;
 
 insert into RoomType (Name, BasePrice)
-Values ('Single',200),('Double Bedroom',300);
+values('Single Bedroom', 200);
 
 insert into RoomType (Name, BasePrice)
-values('Single Bedroom', 200);
+Values ('Double Bedroom',300);
 
 
 insert into RoomType (Name, BasePrice)
@@ -181,11 +181,11 @@ SELECT * FROM RoomType WHERE Name = 'Double Bedroom';
 SELECT * FROM RoomType;
 SELECT * FROM Room;
 
-INSERT INTO Room (TypeID, RoomNumber, Vacancy) VALUES ('2', '301', TRUE);
+INSERT INTO Room (TypeID, RoomNumber, Vacancy) VALUES ('2', '201', TRUE);
 insert into ROOM (TypeID, RoomNumber,Vacancy) Values('1','101',true);
-insert into ROOM (TypeID, RoomNumber,Vacancy) Values('3','201',true);
+insert into ROOM (TypeID, RoomNumber,Vacancy) Values('3','301',true);
 
-INSERT INTO Room (TypeID, RoomNumber, Vacancy) VALUES ('4', '401', TRUE);
+
 
 
 
